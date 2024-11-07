@@ -8,7 +8,6 @@ const WalletDetails = () => {
   const [connector, setConnector] = useState({});
   const [txhash, setTxhash] = useState("");
 
-
   const data1 = useAccount({
     onConnect({ address, connector, isReconnected }) {
       setAddress(address);
@@ -35,17 +34,14 @@ const WalletDetails = () => {
   }, [data, isLoading, isSuccess]);
 
   return (
-    <div>
-      <span>Address: {address}</span> <br />
-      <span>Connected through: {connector?.name}</span><br />
-      <button
-        onClick={async () => {
-          sendTransaction?.();
-        }}
-      >
-        Send Txn
-      </button><br />
-      <span>Txn hash: {txhash}</span>
+    <div >
+
+      {address && (
+        <div>
+          <span>Address: {address}</span><br />
+          <span>Connected through: {connector?.name}</span><br />
+        </div>
+      )}
     </div>
   );
 };
